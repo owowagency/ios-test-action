@@ -1,5 +1,5 @@
-name: 'SwiftLint'
-description: 'OWOW iOS SwiftLint action'
+name: 'iOS Test Action'
+description: 'OWOW iOS Test action'
 runs:
   using: composite
   steps:
