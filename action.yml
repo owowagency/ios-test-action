@@ -1,5 +1,16 @@
 name: 'iOS Test Action'
-description: 'OWOW iOS Test action'
+descrption: 'OWOW iOS Test action'
+inputs:
+  scheme:
+    description: 'The Xcode scheme to build'
+    required: true
+  workspace:
+    description: 'The Xcode workspace to use when building. When not set, no workspace parameter is passed to xcodebuild.'
+    required: false
+  destination:
+    description: 'The build destination passed to xcodebuild.'
+    required: false
+    default: 'name=iPhone 13,OS=15.0'
 runs:
   using: composite
   steps:
@@ -13,3 +24,14 @@ runs:
         
         # The mint bootstrap step makes sure we use the swiftlint version that is declared in the project.
         arch -arm64 mint bootstrap
+     - name: Pod Install
+       shell: bash
+       run: |
+         if [[ -f Podfile ]]; then
+           arch -arm64 pod install
+         else
+           echo No Podfile found - nothing to do
+         fi
+     - name: Build & test
+       run: ${{ github.action_path }}/test.sh
+       shell: bash
