@@ -24,14 +24,14 @@ runs:
         
         # The mint bootstrap step makes sure we use the swiftlint version that is declared in the project.
         arch -arm64 mint bootstrap
-     - name: Pod Install
-       shell: bash
-       run: |
-         if [[ -f Podfile ]]; then
-           arch -arm64 pod install
-         else
-           echo No Podfile found - nothing to do
-         fi
-     - name: Build & test
+    - name: Pod Install
+      shell: bash
+      run: |
+        if [[ -f Podfile ]]; then
+          arch -arm64 pod install
+        else
+          echo No Podfile found - nothing to do
+        fi
+    - name: Build & test
        run: ${{ github.action_path }}/test.sh
        shell: bash
