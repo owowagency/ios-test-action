@@ -12,22 +12,22 @@ var githubRunId = ProcessInfo.processInfo.environment["GITHUB_RUN_ID"]
 var pipeStatus = ProcessInfo.processInfo.environment["PIPESTATUS"]
 
 if let project = project {
-    print(project!)
+    print(project)
 }
 if let workspace = workspace {
-    print(workspace!)
+    print(workspace)
 }
 if let scheme = scheme {
-    print(scheme!)
+    print(scheme)
 }
 if let destination = destination {
-    print(destination!)
+    print(destination)
 }
 if let githubRunId = githubRunId {
-    print(githubRunId!)
+    print(githubRunId)
 }
 if let pipeStatus = pipeStatus {
-    print(pipeStatus!)
+    print(pipeStatus)
 }
 
 //print(project!)
