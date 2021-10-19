@@ -43,4 +43,3 @@ runs:
         workspace: ${{ inputs.workspace }}"
         scheme: ${{ inputs.scheme }}"
         destination: ${{ inputs.destination }}"
-
