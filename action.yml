@@ -37,7 +37,7 @@ runs:
         fi
     - name: Build & test
       shell: bash
-      run: arch -arm64 test.swift
+      run: arch -arm64 ${{ github.action_path }}/test.swift
       env: 
         PROJECT: ${{ inputs.project }}"
         WORKSPACE: ${{ inputs.workspace }}"
