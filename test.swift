@@ -11,12 +11,16 @@ var destination = ProcessInfo.processInfo.environment["DESTINATION"]
 var githubRunId = ProcessInfo.processInfo.environment["GITHUB_RUN_ID"]
 var pipeStatus = ProcessInfo.processInfo.environment["PIPESTATUS"]
 
+print(project!)
+print(workspace!)
+print(scheme!)
+print(destination!)
 print(githubRunId!)
 print(pipeStatus!)
 
 var arguments: [String]
 
-if let project == "" {
+if project == "" {
     arguments = workspaceArguments
 } else {
     arguments = projectArguments
@@ -38,14 +42,8 @@ var projectArguments: [String] = [
     "-derivedDataPath Build/DerivedData | xcpretty && exit \(pipeStatus!.first!)"
 ]
 
-if inputs.count > 1 {
-    for input in inputs {
-        print(input)
-    }
-
-    let task = Process()
-    task.launchPath = "xcodebuild"
-    task.arguments = arguments
-    task.launch()
-    task.waitUntilExit()
-}
+let task = Process()
+task.launchPath = "xcodebuild"
+task.arguments = arguments
+task.launch()
+task.waitUntilExit()
