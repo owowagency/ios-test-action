@@ -16,7 +16,7 @@ print(workspace!)
 print(scheme!)
 print(destination!)
 print(githubRunId!)
-print(pipeStatus!)
+//print(pipeStatus!)
 
 var arguments: [String]
 
@@ -31,7 +31,8 @@ var workspaceArguments: [String] = [
     "-scheme \(scheme!)",
     "-destination \(destination!)",
     "-resultBundlePath 'Build/Result/\(githubRunId!)-iOS15-Simulator.xcresult'",
-    "-derivedDataPath Build/DerivedData | xcpretty && exit \(pipeStatus!)"
+    "-derivedDataPath Build/DerivedData | xcpretty"
+//    && exit \(pipeStatus!)"
 ]
 
 var projectArguments: [String] = [
@@ -39,7 +40,8 @@ var projectArguments: [String] = [
     "-scheme \(scheme!)",
     "-destination \(destination!)",
     "-resultBundlePath 'Build/Result/\(githubRunId!)-iOS15-Simulator.xcresult'",
-    "-derivedDataPath Build/DerivedData | xcpretty && exit \(pipeStatus!)"
+    "-derivedDataPath Build/DerivedData | xcpretty"
+//    && exit \(pipeStatus!)"
 ]
 
 let task = Process()
