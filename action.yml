@@ -6,7 +6,7 @@ inputs:
     required: true
   project:
     description: 'The project name'
-    required: true
+    required: false
   workspace:
     description: 'The Xcode workspace to use when building. When not set, no workspace parameter is passed to xcodebuild.'
     required: false
@@ -37,17 +37,10 @@ runs:
         fi
     - name: Build & test
       shell: bash
-      run: ${{ github.action_path }}/test.sh "${{ inputs.project }}" "${{ inputs.scheme }}" "${{ inputs.destination }}"
-    - name: Pack result bundle
-      shell: bash
-      run: arch -arm64 zip -r -X Build/${GITHUB_RUN_ID}-Xcresult.zip Build/Result
-    - name: Upload result bundle
-      shell: bash
-      uses: actions/upload-artifact@master
-      with:
-        name: ${{ github.run_id }}-Xcresult.zip
-        path: Build/${{ github.run_id }}-Xcresult.zip
-    - name: simctl diagnose
-      shell: bash
-      run: arch -arm64 xcrun simctl diagnose -l
+      run: arch -arm64 test.swift
+      with: 
+        project: ${{ inputs.project }}"
+        workspace: ${{ inputs.workspace }}"
+        scheme: ${{ inputs.scheme }}"
+        destination: ${{ inputs.destination }}"
 
