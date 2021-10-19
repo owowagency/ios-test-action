@@ -37,7 +37,7 @@ if let pipeStatus = pipeStatus {
 var arguments: [String] = []
 
 var workspaceArguments: [String] = [
-    "arch -arm64 xcodebuild clean test",
+    "xcodebuild clean test",
     "-workspace \(workspace!)",
     "-scheme \"\(scheme!)\"",
     "-destination \"\(destination!)\"",
@@ -46,7 +46,7 @@ var workspaceArguments: [String] = [
 ]
 
 var projectArguments: [String] = [
-    "arch -arm64 xcodebuild clean test",
+    "xcodebuild clean test",
     "-project \(project!)",
     "-scheme \(scheme!)",
     "-destination \(destination!)",
@@ -63,12 +63,6 @@ if project == "" {
 for argument in arguments {
     print("argument is \(argument)")
 }
-
-//let task = Process()
-//task.launchPath = "/usr/bin/env bash"
-//task.arguments = arguments
-//task.launch()
-//task.waitUntilExit()
 
 @discardableResult
 func shell(_ args: [String]) -> Int32 {
