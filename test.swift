@@ -4,10 +4,10 @@ import Foundation
 
 var inputs = CommandLine.arguments
 
-var project = ProcessInfo.processInfo.environment["project"]
-var workspace = ProcessInfo.processInfo.environment["workspace"]
-var scheme = ProcessInfo.processInfo.environment["scheme"]
-var destination = ProcessInfo.processInfo.environment["destination"]
+var project = ProcessInfo.processInfo.environment["PROJECT"]
+var workspace = ProcessInfo.processInfo.environment["WORKSPACE"]
+var scheme = ProcessInfo.processInfo.environment["SCHEME"]
+var destination = ProcessInfo.processInfo.environment["DESTINATION"]
 var githubRunId = ProcessInfo.processInfo.environment["GITHUB_RUN_ID"]
 var pipeStatus = ProcessInfo.processInfo.environment["PIPESTATUS"]
 

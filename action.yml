@@ -38,8 +38,8 @@ runs:
     - name: Build & test
       shell: bash
       run: arch -arm64 test.swift
-      with: 
-        project: ${{ inputs.project }}"
-        workspace: ${{ inputs.workspace }}"
-        scheme: ${{ inputs.scheme }}"
-        destination: ${{ inputs.destination }}"
+      env: 
+        PROJECT: ${{ inputs.project }}"
+        WORKSPACE: ${{ inputs.workspace }}"
+        SCHEME: ${{ inputs.scheme }}"
+        DESTINATION: ${{ inputs.destination }}"
