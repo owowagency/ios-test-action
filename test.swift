@@ -37,7 +37,6 @@ if let pipeStatus = pipeStatus {
 var arguments: [String] = []
 
 var workspaceArguments: [String] = [
-    "xcodebuild clean test",
     "-workspace \(workspace!)",
     "-scheme \"\(scheme!)\"",
     "-destination \"\(destination!)\"",
@@ -46,7 +45,6 @@ var workspaceArguments: [String] = [
 ]
 
 var projectArguments: [String] = [
-    "xcodebuild clean test",
     "-project \(project!)",
     "-scheme \(scheme!)",
     "-destination \(destination!)",
@@ -65,7 +63,7 @@ for argument in arguments {
 }
 
 let task = Process()
-task.launchPath = "/bin/bash"
+task.launchPath = "xcodebuild clean test"
 task.arguments = arguments
 task.launch()
 task.waitUntilExit()
