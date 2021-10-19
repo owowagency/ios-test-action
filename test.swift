@@ -11,6 +11,8 @@ var destination = ProcessInfo.processInfo.environment["DESTINATION"]
 var githubRunId = ProcessInfo.processInfo.environment["GITHUB_RUN_ID"]
 var pipeStatus = ProcessInfo.processInfo.environment["PIPESTATUS"]
 
+var osVersion  = destination.suffix(3)!
+
 if let project = project {
     print(project)
 }
@@ -30,41 +32,38 @@ if let pipeStatus = pipeStatus {
     print(pipeStatus)
 }
 
-//print(project!)
-//print(workspace!)
-//print(scheme!)
-//print(destination!)
-//print(githubRunId!)
-//print(pipeStatus!)
+print(osVersion)
 
-//var arguments: [String]
+var arguments: [String] = []
 
-//if project == "" {
-//    arguments = workspaceArguments
-//} else {
-//    arguments = projectArguments
-//}
-//
-//var workspaceArguments: [String] = [
-//    "-workspace \(workspace!)",
-//    "-scheme \(scheme!)",
-//    "-destination \(destination!)",
-//    "-resultBundlePath 'Build/Result/\(githubRunId!)-iOS15-Simulator.xcresult'",
-//    "-derivedDataPath Build/DerivedData | xcpretty"
-////    && exit \(pipeStatus!)"
-//]
-//
-//var projectArguments: [String] = [
-//    "-project \(project!)",
-//    "-scheme \(scheme!)",
-//    "-destination \(destination!)",
-//    "-resultBundlePath 'Build/Result/\(githubRunId!)-iOS15-Simulator.xcresult'",
-//    "-derivedDataPath Build/DerivedData | xcpretty"
-////    && exit \(pipeStatus!)"
-//]
-//
-//let task = Process()
-//task.launchPath = "xcodebuild"
-//task.arguments = arguments
-//task.launch()
-//task.waitUntilExit()
+var workspaceArguments: [String] = [
+    "-workspace \(workspace!)",
+    "-scheme \"\(scheme!)\"",
+    "-destination \"\(destination!)\"",
+    "-resultBundlePath \"Build/Result/\(githubRunId!)-iOS15-Simulator.xcresult\"",
+    "-derivedDataPath Build/DerivedData | xcpretty && exit"
+]
+
+var projectArguments: [String] = [
+    "-project \(project!)",
+    "-scheme \(scheme!)",
+    "-destination \(destination!)",
+    "-resultBundlePath \"Build/Result/\(githubRunId!)-iOS15-Simulator.xcresult\"",
+    "-derivedDataPath Build/DerivedData | xcpretty && exit"
+]
+
+if project == "" {
+    arguments = workspaceArguments
+} else {
+    arguments = projectArguments
+}
+
+for argument in arguments {
+    print(argument)
+}
+
+let task = Process()
+task.launchPath = "xcodebuild"
+task.arguments = arguments
+task.launch()
+task.waitUntilExit()

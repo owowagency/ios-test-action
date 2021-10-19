@@ -39,7 +39,7 @@ runs:
       shell: bash
       run: arch -arm64 ${{ github.action_path }}/test.swift
       env: 
-        PROJECT: ${{ inputs.project }}"
-        WORKSPACE: ${{ inputs.workspace }}"
-        SCHEME: ${{ inputs.scheme }}"
-        DESTINATION: ${{ inputs.destination }}"
+        PROJECT: ${{ inputs.project }}
+        WORKSPACE: ${{ inputs.workspace }}
+        SCHEME: ${{ inputs.scheme }}
+        DESTINATION: ${{ inputs.destination }}
