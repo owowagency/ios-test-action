@@ -41,9 +41,9 @@ runs:
     - name: Pack result bundle
       shell: bash
       run: arch -arm64 zip -r -X Build/${GITHUB_RUN_ID}-Xcresult.zip Build/Result
-    - uses: actions/upload-artifact@master
     - name: Upload result bundle
       shell: bash
+      uses: actions/upload-artifact@master
       with:
         name: ${{ github.run_id }}-Xcresult.zip
         path: Build/${{ github.run_id }}-Xcresult.zip
