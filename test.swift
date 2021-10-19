@@ -1,4 +1,4 @@
-#!/usr/bin/swift
+#!/usr/bin/env swift
 
 import Foundation
 
@@ -64,8 +64,21 @@ for argument in arguments {
     print("argument is \(argument)")
 }
 
-let task = Process()
-task.launchPath = "/usr/bin/env bash"
-task.arguments = arguments
-task.launch()
-task.waitUntilExit()
+//let task = Process()
+//task.launchPath = "/usr/bin/env bash"
+//task.arguments = arguments
+//task.launch()
+//task.waitUntilExit()
+
+@discardableResult
+func shell(_ args: [String]) -> Int32 {
+    let task = Process()
+    task.launchPath = "/usr/bin/env"
+    task.arguments = args
+    task.launch()
+    task.waitUntilExit()
+    return task.terminationStatus
+}
+
+shell("ls")
+shell(arguments)
