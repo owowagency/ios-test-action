@@ -11,7 +11,7 @@ var destination = ProcessInfo.processInfo.environment["DESTINATION"]
 var githubRunId = ProcessInfo.processInfo.environment["GITHUB_RUN_ID"]
 var pipeStatus = ProcessInfo.processInfo.environment["PIPESTATUS"]
 
-var osVersion  = String(destination).suffix(3)
+//var osVersion  = String(destination).suffix(3)
 
 if let project = project {
     print(project)
@@ -32,7 +32,7 @@ if let pipeStatus = pipeStatus {
     print(pipeStatus)
 }
 
-print(osVersion)
+//print(osVersion)
 
 var arguments: [String] = []
 
