@@ -33,5 +33,6 @@ runs:
           echo No Podfile found - nothing to do
         fi
     - name: Build & test
-       run: ${{ github.action_path }}/test.sh
-       shell: bash
+      shell: bash
+      run: ${{ github.action_path }}/test.sh
+
