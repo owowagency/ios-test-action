@@ -61,11 +61,11 @@ if project == "" {
 }
 
 for argument in arguments {
-    print(argument)
+    print("argument is \(argument)")
 }
 
 let task = Process()
-task.launchPath = "/usr/bin/env"
+task.launchPath = "/usr/bin/env bash"
 task.arguments = arguments
 task.launch()
 task.waitUntilExit()
