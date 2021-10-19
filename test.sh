@@ -9,6 +9,6 @@ echo $PROJECT
 arch -arm64 xcodebuild clean test \
      -project $PROJECT \
      -scheme $SCHEME \
-     -destination $DESTINATION \
+     -destination "$DESTINATION" \
      -resultBundlePath "Build/Result/${GITHUB_RUN_ID}-iOS15-Simulator.xcresult" \
      -derivedDataPath Build/DerivedData | xcpretty && exit ${PIPESTATUS[0]}
