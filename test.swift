@@ -37,7 +37,7 @@ if let pipeStatus = pipeStatus {
 var arguments: [String] = []
 
 var workspaceArguments: [String] = [
-    "xcodebuild clean test",
+    "arch -arm64 xcodebuild clean test",
     "-workspace \(workspace!)",
     "-scheme \"\(scheme!)\"",
     "-destination \"\(destination!)\"",
@@ -46,7 +46,7 @@ var workspaceArguments: [String] = [
 ]
 
 var projectArguments: [String] = [
-    "xcodebuild clean test",
+    "arch -arm64 xcodebuild clean test",
     "-project \(project!)",
     "-scheme \(scheme!)",
     "-destination \(destination!)",
