@@ -48,9 +48,12 @@ var projectArguments: [String] = [
     "xcodebuild",
     "clean",
     "test",
-    "-project \(project!)",
-    "-scheme \(scheme!)",
-    "-destination \(destination!)",
+    "-project",
+    "\(project!)",
+    "-scheme",
+    "\(scheme!)",
+    "-destination",
+    "\(destination!)",
     "-resultBundlePath \"Build/Result/\(githubRunId!)-iOS15-Simulator.xcresult\"",
     "-derivedDataPath Build/DerivedData | xcpretty && exit"
 ]
