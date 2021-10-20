@@ -45,10 +45,8 @@ runs:
         DESTINATION: ${{ inputs.destination }}
     - name: Pack result bundle
       shell: bash
-      run: |
-        if [[ always() ]]; then 
-          arch -arm64 zip -r -X Build/${GITHUB_RUN_ID}-Xcresult.zip Build/Result
-        fi
+      if: always()
+      run: arch -arm64 zip -r -X Build/${GITHUB_RUN_ID}-Xcresult.zip Build/Result
     - uses: actions/upload-artifact@master
       with:
         name: ${{ github.run_id }}-Xcresult.zip
