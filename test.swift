@@ -33,8 +33,11 @@ if let pipeStatus = pipeStatus {
 var arguments: [String] = []
 
 var workspaceArguments: [String] = [
-    "xcodebuild clean test",
-    "-workspace \(workspace!)",
+    "xcodebuild",
+    "clean",
+    "test",
+    "-workspace",
+    "\(workspace!)",
     "-scheme \"\(scheme!)\"",
     "-destination \"\(destination!)\"",
     "-resultBundlePath \"Build/Result/\(githubRunId!)-iOS15-Simulator.xcresult\"",
@@ -42,7 +45,9 @@ var workspaceArguments: [String] = [
 ]
 
 var projectArguments: [String] = [
-    "xcodebuild clean test",
+    "xcodebuild",
+    "clean",
+    "test",
     "-project \(project!)",
     "-scheme \(scheme!)",
     "-destination \(destination!)",
@@ -70,5 +75,4 @@ func shell(_ args: [String]) -> Int32 {
     return task.terminationStatus
 }
 
-shell(["ls"])
 shell(arguments)
