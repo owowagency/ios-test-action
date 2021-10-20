@@ -43,19 +43,3 @@ runs:
         WORKSPACE: ${{ inputs.workspace }}
         SCHEME: ${{ inputs.scheme }}
         DESTINATION: ${{ inputs.destination }}
-    - name: Pack result bundle
-      shell: bash
-      run: |
-        if [[ always() ]]; then 
-          arch -arm64 zip -r -X Build/${GITHUB_RUN_ID}-Xcresult.zip Build/Result
-        fi
-    - uses: actions/upload-artifact@master
-      with:
-        name: ${{ github.run_id }}-Xcresult.zip
-        path: Build/${{ github.run_id }}-Xcresult.zip
-    - name: simctl diagnose
-      shell: bash
-      run: |
-        if [[ failure() ]]; then
-          arch -arm64 xcrun simctl diagnose -l
-        fi
