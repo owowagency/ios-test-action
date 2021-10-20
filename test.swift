@@ -40,8 +40,10 @@ var workspaceArguments: [String] = [
     "\(workspace!)",
     "-scheme \"\(scheme!)\"",
     "-destination \"\(destination!)\"",
-    "-resultBundlePath \"Build/Result/\(githubRunId!)-iOS15-Simulator.xcresult\"",
-    "-derivedDataPath Build/DerivedData | xcpretty && exit"
+    "-resultBundlePath",
+    "\"Build/Result/\(githubRunId!)-iOS15-Simulator.xcresult\"",
+    "-derivedDataPath",
+    "Build/DerivedData | xcpretty && exit"
 ]
 
 var projectArguments: [String] = [
