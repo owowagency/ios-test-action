@@ -56,8 +56,10 @@ var projectArguments: [String] = [
     "\(scheme!)",
     "-destination",
     "\(destination!)",
-    "-resultBundlePath \"Build/Result/\(githubRunId!)-iOS15-Simulator.xcresult\"",
-    "-derivedDataPath Build/DerivedData | xcpretty && exit"
+    "-resultBundlePath",
+    "\"Build/Result/\(githubRunId!)-iOS15-Simulator.xcresult\"",
+    "-derivedDataPath",
+    "Build/DerivedData | xcpretty && exit"
 ]
 
 if project == "" {
