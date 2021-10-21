@@ -43,7 +43,7 @@ var packResultBundle: [String] = [
     "zip",
     "-X",
     "-resultBundlePath",
-    "Build/${GITHUB_RUN_ID}-Xcresult.zip",
+    "Build/\(githubRunId!)-Xcresult.zip",
     "-derivedDataPath",
     "Build/Result"
 ]
