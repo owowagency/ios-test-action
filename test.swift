@@ -9,49 +9,24 @@ var workspace = ProcessInfo.processInfo.environment["WORKSPACE"]
 var scheme = ProcessInfo.processInfo.environment["SCHEME"]
 var destination = ProcessInfo.processInfo.environment["DESTINATION"]
 var githubRunId = ProcessInfo.processInfo.environment["GITHUB_RUN_ID"]
-var pipeStatus = ProcessInfo.processInfo.environment["PIPESTATUS"]
-
-if let project = project {
-    print(project)
-}
-if let workspace = workspace {
-    print(workspace)
-}
-if let scheme = scheme {
-    print(scheme)
-}
-if let destination = destination {
-    print(destination)
-}
-if let githubRunId = githubRunId {
-    print(githubRunId)
-}
-if let pipeStatus = pipeStatus {
-    print(pipeStatus)
-}
-
-var arguments: [String] = []
 
 var workspaceArguments: [String] = [
-    "xcodebuild",
-    "clean",
-    "test",
     "-workspace",
     "\(workspace!)",
-    "-scheme \"\(scheme!)\"",
-    "-destination \"\(destination!)\"",
-    "-resultBundlePath",
-    "\"Build/Result/\(githubRunId!)-iOS15-Simulator.xcresult\"",
-    "-derivedDataPath",
-    "Build/DerivedData | xcpretty && exit"
 ]
 
 var projectArguments: [String] = [
-    "xcodebuild",
-    "clean",
-    "test",
     "-project",
     "\(project!)",
+]
+
+var arguments: [String] = [
+    "xcodebuild",
+    "clean",
+    "test"
+]
+
+var standartArguments: [String] = [
     "-scheme",
     "\(scheme!)",
     "-destination",
@@ -63,13 +38,11 @@ var projectArguments: [String] = [
 ]
 
 if project == "" {
-    arguments = workspaceArguments
+    arguments.append(contentsOf: workspaceArguments)
+    arguments.append(contentsOf: standartArguments)
 } else {
-    arguments = projectArguments
-}
-
-for argument in arguments {
-    print("argument is \(argument)")
+    arguments.append(contentsOf: projectArguments)
+    arguments.append(contentsOf: standartArguments)
 }
 
 @discardableResult
