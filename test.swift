@@ -41,10 +41,10 @@ var packResultBundle: [String] = [
     "arch",
     "-arm64",
     "zip",
+    "-r",
     "-X",
     "-resultBundlePath",
     "Build/\(githubRunId!)-Xcresult.zip",
-    "-derivedDataPath",
     "Build/Result"
 ]
 
