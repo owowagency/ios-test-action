@@ -43,3 +43,10 @@ runs:
         WORKSPACE: ${{ inputs.workspace }}
         SCHEME: ${{ inputs.scheme }}
         DESTINATION: ${{ inputs.destination }}
+    - name: Pack result bundle
+      run: arch -arm64 zip -r -X Build/${GITHUB_RUN_ID}-Xcresult.zip Build/Result
+    - name: Upload result bundle
+      uses: actions/upload-artifact@master
+      with:
+        name: ${{ github.run_id }}-Xcresult.zip
+        path: Build/${{ github.run_id }}-Xcresult.zip
