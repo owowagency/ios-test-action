@@ -32,7 +32,7 @@ var standartArguments: [String] = [
     "-destination",
     "\(destination!)",
     "-resultBundlePath",
-    "\"Build/Result/\(githubRunId!)-iOS15-Simulator.xcresult\"",
+    "Build/Result/\(githubRunId!)-iOS15-Simulator.xcresult",
     "-derivedDataPath",
     "Build/DerivedData | xcpretty && exit"
 ]
