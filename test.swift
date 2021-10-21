@@ -37,6 +37,17 @@ var standartArguments: [String] = [
     "Build/DerivedData | xcpretty && exit"
 ]
 
+var packResultBundle: [String] = [
+    "arch",
+    "-arm64",
+    "zip",
+    "-X",
+    "-resultBundlePath",
+    "Build/${GITHUB_RUN_ID}-Xcresult.zip",
+    "-derivedDataPath",
+    "Build/Result"
+]
+
 if project == "" {
     arguments.append(contentsOf: workspaceArguments)
     arguments.append(contentsOf: standartArguments)
@@ -55,4 +66,10 @@ func shell(_ args: [String]) -> Int32 {
     return task.terminationStatus
 }
 
-shell(arguments)
+var status = shell(arguments)
+
+shell(packResultBundle)
+
+exit(status)
+
+
