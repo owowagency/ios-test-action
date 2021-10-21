@@ -43,8 +43,7 @@ var packResultBundle: [String] = [
     "zip",
     "-r",
     "-X",
-    "Build/\(githubRunId!)-Xcresult.zip",
-    "Build/Result"
+    "Build/\(githubRunId!)-Xcresult.zip Build/Result"
 ]
 
 if project == "" {
